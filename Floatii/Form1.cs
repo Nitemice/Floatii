@@ -52,18 +52,25 @@ namespace Floatii
         {
             InitializeComponent();
 
-            var style = GetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE);
-            style = new IntPtr(style.ToInt64() | WS_EX_TOPMOST);
-            SetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE, style); 
-            
-            //this.SetStyle(ControlStyles.)
+            setUpForm();
+
             this.MouseDown += Form1_MouseDown;
+        }
+
+        private void setUpForm()
+        {
+            var style = GetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE);
+            style = new IntPtr(style.ToInt64() | WS_EX_TOOLWINDOW);
+            SetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE, style);
+
+            //this.SetStyle(ControlStyles.)
+
+            this.TopMost = true;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            this.Size = new Size(32, 32);
-            this.TopMost = true;
+            this.Size = this.BackgroundImage.Size;
         }
 
         private void quitToolStripMenuItem_Click(object sender, EventArgs e)
@@ -84,9 +91,34 @@ namespace Floatii
                 this.BackgroundImage = new Bitmap(Properties.Resources.EGYPT);
                 this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
                 this.BackgroundImageLayout = ImageLayout.Tile;
-                this.Size = new Size(32, 32);
+                this.Size = this.BackgroundImage.Size;
             }
-            this.TopMost = true;
+            setUpForm();
+        }
+
+        private void changeOpacity(double amount)
+        {
+            double op = this.Opacity;
+            op += amount;
+            if (op < 0.05)
+            {
+                op = 0.05;
+            }
+            else if (op > 1.0)
+            {
+                op = 1;
+            }
+            this.Opacity = op;
+        }
+
+        private void upToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            changeOpacity(0.07);
+        }
+
+        private void downToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            changeOpacity(-0.07);
         }
 
         /*
@@ -96,7 +128,7 @@ namespace Floatii
             resizer.Height += amount;
             resizer.Width += amount;
             this.Size = resizer;
-            this.TopMost = true;
+            setUpForm();
         }
 
         private void upToolStripMenuItem_Click(object sender, EventArgs e)
