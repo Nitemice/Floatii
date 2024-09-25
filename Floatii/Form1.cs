@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace Floatii
@@ -48,52 +44,17 @@ namespace Floatii
             }
         }
 
-        public floatii()
+        private Bitmap getBackground()
         {
-            InitializeComponent();
+            Bitmap[] bg = { Properties.Resources.ARCADE, Properties.Resources.ARGYLE,
+                            Properties.Resources.CASTLE, Properties.Resources.EGYPT,
+                            Properties.Resources.REDBRICK, Properties.Resources.RIVETS,
+                            Properties.Resources.SQUARES, Properties.Resources.THATCH,
+                            Properties.Resources.ZIGZAG };
 
-            setUpForm();
-
-            this.MouseDown += Form1_MouseDown;
-        }
-
-        private void setUpForm()
-        {
-            var style = GetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE);
-            style = new IntPtr(style.ToInt64() | WS_EX_TOOLWINDOW);
-            SetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE, style);
-
-            //this.SetStyle(ControlStyles.)
-
-            this.TopMost = true;
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            this.Size = this.BackgroundImage.Size;
-        }
-
-        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
-        private void changeImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.dlgOpenFile.Filter = "Images|*.jpg; *.jpeg; *.gif; *.bmp; *.png;";
-            if (this.dlgOpenFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-            {
-                this.BackgroundImage = Bitmap.FromFile(this.dlgOpenFile.FileName);
-                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Sizable;
-                this.BackgroundImageLayout = ImageLayout.Stretch;
-            } else
-            {
-                this.BackgroundImage = new Bitmap(Properties.Resources.EGYPT);
-                this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-                this.BackgroundImageLayout = ImageLayout.Tile;
-                this.Size = this.BackgroundImage.Size;
-            }
-            setUpForm();
+            Random rnd = new Random();
+            int index = rnd.Next(bg.Length);
+            return bg[index];
         }
 
         private void changeOpacity(double amount)
@@ -111,6 +72,79 @@ namespace Floatii
             this.Opacity = op;
         }
 
+        private void setUpForm()
+        {
+            var style = GetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE);
+            style = new IntPtr(style.ToInt64() | WS_EX_TOOLWINDOW);
+            SetWindowLongPtr(this.Handle, GWL.GWL_EXSTYLE, style);
+
+            this.MinimumSize = new Size(10, 10);
+            this.AutoSize = false;
+
+            this.TopMost = true;
+        }
+
+        public floatii()
+        {
+            InitializeComponent();
+
+            setUpForm();
+
+            this.MouseDown += Form1_MouseDown;
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            this.BackgroundImage = getBackground();
+            this.Size = this.BackgroundImage.Size;
+            this.MouseWheel += scrollWheel;
+        }
+
+        private void scrollWheel(object sender, MouseEventArgs e)
+        {
+            if (e.Delta > 0)
+            {
+                changeOpacity(0.05);
+            }
+            else
+            {
+                changeOpacity(-0.05);
+            }
+        }
+
+        private void quitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void changeImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.dlgOpenFile.Filter = "Images|*.jpg; *.jpeg; *.gif; *.bmp; *.png;";
+            if (this.dlgOpenFile.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                this.BackgroundImage = Bitmap.FromFile(this.dlgOpenFile.FileName);
+                this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+                this.BackgroundImageLayout = ImageLayout.Stretch;
+                Size foo = this.BackgroundImage.Size;
+                if (foo.Width > 100 || foo.Height > 100)
+                {
+                    foo.Width /= 10;
+                    foo.Height /= 10;
+                }
+                this.Size = foo;
+            }
+            else
+            {
+                this.BackgroundImage = getBackground();
+                this.FormBorderStyle = FormBorderStyle.None;
+                this.BackgroundImageLayout = ImageLayout.Tile;
+                this.Size = this.BackgroundImage.Size;
+            }
+            setUpForm();
+        }
+
+
+        /*
         private void upToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             changeOpacity(0.07);
@@ -120,6 +154,7 @@ namespace Floatii
         {
             changeOpacity(-0.07);
         }
+        */
 
         /*
         private void changeSize(int amount)

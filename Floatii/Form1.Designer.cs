@@ -33,13 +33,8 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.changeImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.opacityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.upToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.downToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
-            this.sizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.upToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.downToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,10 +42,9 @@
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.changeImageToolStripMenuItem,
-            this.quitToolStripMenuItem,
-            this.opacityToolStripMenuItem});
+            this.quitToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(152, 70);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(152, 48);
             // 
             // changeImageToolStripMenuItem
             // 
@@ -66,52 +60,22 @@
             this.quitToolStripMenuItem.Text = "Quit";
             this.quitToolStripMenuItem.Click += new System.EventHandler(this.quitToolStripMenuItem_Click);
             // 
-            // opacityToolStripMenuItem
-            // 
-            this.opacityToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.upToolStripMenuItem1,
-            this.downToolStripMenuItem2});
-            this.opacityToolStripMenuItem.Name = "opacityToolStripMenuItem";
-            this.opacityToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.opacityToolStripMenuItem.Text = "Opacity";
-            // 
-            // upToolStripMenuItem1
-            // 
-            this.upToolStripMenuItem1.Name = "upToolStripMenuItem1";
-            this.upToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.upToolStripMenuItem1.Text = "++";
-            this.upToolStripMenuItem1.Click += new System.EventHandler(this.upToolStripMenuItem1_Click);
-            // 
-            // downToolStripMenuItem2
-            // 
-            this.downToolStripMenuItem2.Name = "downToolStripMenuItem2";
-            this.downToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
-            this.downToolStripMenuItem2.Text = "--";
-            this.downToolStripMenuItem2.Click += new System.EventHandler(this.downToolStripMenuItem2_Click);
-            // 
             // dlgOpenFile
             // 
             this.dlgOpenFile.FileName = "openFileDialog1";
             // 
-            // sizeToolStripMenuItem
+            // notifyIcon1
             // 
-            this.sizeToolStripMenuItem.Name = "sizeToolStripMenuItem";
-            this.sizeToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
-            // upToolStripMenuItem
-            // 
-            this.upToolStripMenuItem.Name = "upToolStripMenuItem";
-            this.upToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
-            // 
-            // downToolStripMenuItem
-            // 
-            this.downToolStripMenuItem.Name = "downToolStripMenuItem";
-            this.downToolStripMenuItem.Size = new System.Drawing.Size(32, 19);
+            this.notifyIcon1.BalloonTipTitle = "Floatii";
+            this.notifyIcon1.ContextMenuStrip = this.contextMenuStrip1;
+            this.notifyIcon1.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon1.Icon")));
+            this.notifyIcon1.Text = "Floatii";
+            this.notifyIcon1.Visible = true;
             // 
             // floatii
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.BackgroundImage = global::Floatii.Properties.Resources.RIVETS;
             this.ClientSize = new System.Drawing.Size(32, 32);
             this.ContextMenuStrip = this.contextMenuStrip1;
             this.ControlBox = false;
@@ -120,6 +84,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(10, 10);
             this.Name = "floatii";
             this.Opacity = 0.8D;
             this.ShowInTaskbar = false;
@@ -138,12 +103,13 @@
         private System.Windows.Forms.ToolStripMenuItem quitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem changeImageToolStripMenuItem;
         private System.Windows.Forms.OpenFileDialog dlgOpenFile;
-        private System.Windows.Forms.ToolStripMenuItem sizeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem upToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem downToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem opacityToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem upToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem downToolStripMenuItem2;
+        //private System.Windows.Forms.ToolStripMenuItem sizeToolStripMenuItem;
+        //private System.Windows.Forms.ToolStripMenuItem upToolStripMenuItem;
+        //private System.Windows.Forms.ToolStripMenuItem downToolStripMenuItem;
+        //private System.Windows.Forms.ToolStripMenuItem opacityToolStripMenuItem;
+        //private System.Windows.Forms.ToolStripMenuItem upToolStripMenuItem1;
+        //private System.Windows.Forms.ToolStripMenuItem downToolStripMenuItem2;
+        private System.Windows.Forms.NotifyIcon notifyIcon1;
     }
 }
 
