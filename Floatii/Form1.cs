@@ -46,20 +46,21 @@ namespace Floatii
 
         // Make form snap to screen edge
         // https://stackoverflow.com/a/591734
-        private bool DoSnap(int pos, int edge, int dist)
+        private const int SnapDist = 25;
+        private bool DoSnap(int pos, int edge)
         {
-            int delta = Math.Abs(pos - edge);
-            return delta > 0 && delta <= dist;
+            int delta = pos - edge;
+            return (delta < 0) || (delta > 0 && delta <= SnapDist);
         }
 
         protected override void OnResizeEnd(EventArgs e)
         {
             base.OnResizeEnd(e);
             Screen scn = Screen.FromPoint(this.Location);
-            if (DoSnap(this.Left, scn.WorkingArea.Left, this.Width)) this.Left = scn.WorkingArea.Left;
-            if (DoSnap(this.Top, scn.WorkingArea.Top, this.Height)) this.Top = scn.WorkingArea.Top;
-            if (DoSnap(scn.WorkingArea.Right, this.Right, this.Width)) this.Left = scn.WorkingArea.Right - this.Width;
-            if (DoSnap(scn.WorkingArea.Bottom, this.Bottom, this.Height)) this.Top = scn.WorkingArea.Bottom - this.Height;
+            if (DoSnap(this.Left, scn.WorkingArea.Left)) this.Left = scn.WorkingArea.Left;
+            if (DoSnap(this.Top, scn.WorkingArea.Top)) this.Top = scn.WorkingArea.Top;
+            if (DoSnap(scn.WorkingArea.Right, this.Right)) this.Left = scn.WorkingArea.Right - this.Width;
+            if (DoSnap(scn.WorkingArea.Bottom, this.Bottom)) this.Top = scn.WorkingArea.Bottom - this.Height;
         }
 
         private Bitmap getBackground()
