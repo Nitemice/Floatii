@@ -162,6 +162,11 @@ namespace Floatii
             setUpForm();
         }
 
+        private void notifyIcon1_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.BringToFront();
+        }
+
 
         /*
         private void upToolStripMenuItem1_Click(object sender, EventArgs e)
