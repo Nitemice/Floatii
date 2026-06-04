@@ -167,6 +167,11 @@ namespace Floatii
             this.BringToFront();
         }
 
+        private void tmrBringFront_Tick(object sender, EventArgs e)
+        {
+            this.BringToFront();
+        }
+
 
         /*
         private void upToolStripMenuItem1_Click(object sender, EventArgs e)

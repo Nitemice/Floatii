@@ -35,6 +35,7 @@
             this.quitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dlgOpenFile = new System.Windows.Forms.OpenFileDialog();
             this.notifyIcon1 = new System.Windows.Forms.NotifyIcon(this.components);
+            this.tmrBringFront = new System.Windows.Forms.Timer(this.components);
             this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -72,6 +73,12 @@
             this.notifyIcon1.Text = "Floatii";
             this.notifyIcon1.Visible = true;
             this.notifyIcon1.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon1_MouseDoubleClick);
+            // 
+            // tmrBringFront
+            // 
+            this.tmrBringFront.Enabled = true;
+            this.tmrBringFront.Interval = 2000000;
+            this.tmrBringFront.Tick += new System.EventHandler(this.tmrBringFront_Tick);
             // 
             // floatii
             // 
@@ -111,6 +118,7 @@
         //private System.Windows.Forms.ToolStripMenuItem upToolStripMenuItem1;
         //private System.Windows.Forms.ToolStripMenuItem downToolStripMenuItem2;
         private System.Windows.Forms.NotifyIcon notifyIcon1;
+        private System.Windows.Forms.Timer tmrBringFront;
     }
 }
 

@@ -300,6 +300,9 @@
         DwQP/wAA/8AADA//AAD/4AAMD/8AAP/wABgH/wAA//gAOAf/AAD//gB4B/8AAP//gfwP/wAA
 </value>
   </data>
+  <metadata name="tmrBringFront.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>404, 17</value>
+  </metadata>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAYAICAQAAEABADoAgAAZgAAABAQEAABAAQAKAEAAE4DAAAgIAAAAQAIAKgIAAB2BAAAMDAAAAEA
